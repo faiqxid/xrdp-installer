@@ -10,13 +10,13 @@ sudo su
 cd
 ```
 ```shell
-wget https://raw.githubusercontent.com/faiqxid/auto-install-vnc-use-ngrok/main/install.sh
+wget https://raw.githubusercontent.com/faiqxid/xrdp-installer/main/xrdp.sh
 ```
 ```shell
-chmod +x install.sh
+chmod +x xrdp.sh
 ```
 ```shell
-./install.sh
+./xrdp.sh
 ```
 
 
