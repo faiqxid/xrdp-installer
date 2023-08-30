@@ -34,13 +34,15 @@ echo deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.
 
 clear
 
-echo -e "\e[1m\e[32m5. install Chrome.... \e[0m" && sleep 1
+echo -e "\e[1m\e[32m5. install Chrome.... \e[0m" && sleep 3
 apt update && apt install google-chrome-stable -y
+
+clear
 
 echo -e "\e[1m\e[32m6. install ngrok.... \e[0m" && sleep 1
 curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc |  tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" |  tee /etc/apt/sources.list.d/ngrok.list &&  apt update &&  apt install ngrok
-read -p "Enter your Ngrok Auth Token: " authtoken
 
+read -p "Enter your Ngrok Auth Token: " authtoken
 if [ -n "$authtoken" ]; then
     ngrok authtoken "$authtoken"
     echo "Auth Token has been set successfully."
