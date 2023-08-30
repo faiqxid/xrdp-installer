@@ -18,6 +18,12 @@ apt install ubuntu-desktop -y
 sleep 1
 apt install xrdp -y
 sleep 1
+apt install python3-pip -y
+sleep 1
+apt install python3-tk -y
+sleep 1
+apt install python3-dev -y
+sleep 1
 adduser xrdp ssl-cert
 echo -e "\e[1m\e[32m3. set repo... \e[0m" && sleep 1
 apt install software-properties-common apt-transport-https wget ca-certificates gnupg2 ubuntu-keyring -y
