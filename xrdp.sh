@@ -31,7 +31,7 @@ wget -O- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor |  te
 
 echo -e "\e[1m\e[32m4. setup repo... \e[0m" && sleep 1
 echo deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main |  tee /etc/apt/sources.list.d/google-chrome.list
-
+clear
 echo -e "\e[1m\e[32m5. install Chrome.... \e[0m" && sleep 1
 apt update && apt install google-chrome-stable -y
 
