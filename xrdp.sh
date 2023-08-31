@@ -14,6 +14,8 @@ echo -e "\e[1m\e[32m1. Updating packages... \e[0m" && sleep 1
 apt update && apt upgrade -y
 
 echo -e "\e[1m\e[32m2. Installing dependencies... \e[0m" && sleep 1
+apt install curl
+sleep 1
 apt install ubuntu-desktop -y
 sleep 1
 apt install xrdp -y
@@ -52,15 +54,26 @@ clear
 echo -e "\e[1m\e[32m6. install Chrome.... \e[0m" && sleep 3
 apt update && apt install google-chrome-stable -y
 
+sleep 1
+echo -e "\e[1m\e[32m7. set repo... \e[0m" && sleep 1
+curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+
+echo -e "\e[1m\e[32m8. setup repo... \e[0m" && sleep 1
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+clear
+
+echo -e "\e[1m\e[32m9. install Chrome.... \e[0m" && sleep 3
+apt update && apt install brave-browser -y
 
 
-echo -e "\e[1m\e[32m7. Set Up XRDP.... \e[0m" && sleep 1
+echo -e "\e[1m\e[32m10. Set Up XRDP.... \e[0m" && sleep 1
 startwm_file="/etc/xrdp/startwm.sh"
 lines_to_add="unset DBUS_SESSION_BUS_ADDRESS\nunset XDG_RUNTIME_DIR"
 sed -i "/test -x \/etc\/X11\/Xsession && exec \/etc\/X11\/Xsession/i $lines_to_add" "$startwm_file"
 systemctl restart xrdp
 
-echo -e "\e[1m\e[32m8. get host vnc  .... \e[0m" && sleep 1
+echo -e "\e[1m\e[32m11. get host vnc  .... \e[0m" && sleep 1
 
 
 screen -dmS xrdp
@@ -68,6 +81,6 @@ sleep 1
 screen -S xrdp -X stuff "ngrok tcp 3389
 "
 
-echo -e "\e[1m\e[32m9. get host vnc  .... \e[0m" && sleep 1
+echo -e "\e[1m\e[32m12. get host vnc  .... \e[0m" && sleep 1
 
 screen -r xrdp
