@@ -41,7 +41,7 @@ clear
 
 echo -e "\e[1m\e[32m6. install ngrok.... \e[0m" && sleep 1
 curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc |  tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" |  tee /etc/apt/sources.list.d/ngrok.list &&  apt update &&  apt install ngrok
-
+unset authtoken
 read -p "Enter your Ngrok Auth Token: " authtoken
 if [ -n "$authtoken" ]; then
     ngrok authtoken "$authtoken"
